@@ -1,8 +1,61 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7s3c3gnuy4f6"]
+[gd_scene load_steps=16 format=3 uid="uid://c7s3c3gnuy4f6"]
 
 [ext_resource type="Texture2D" uid="uid://4ujhfqyl0f8r" path="res://assets/Terrain (16x16).png" id="1_wluma"]
 [ext_resource type="PackedScene" uid="uid://cmpcer4q0xw6d" path="res://character.tscn" id="2_fomvq"]
 [ext_resource type="Script" path="res://TileMap.gd" id="2_pw11e"]
+[ext_resource type="Texture2D" uid="uid://bcgwyppkc43mf" path="res://assets/islands/ile-arbre.png" id="4_1rx1q"]
+[ext_resource type="Texture2D" uid="uid://bgchft4bj54cu" path="res://assets/islands/ile-Palais.png" id="5_22pci"]
+[ext_resource type="Texture2D" uid="uid://bcfv08pascx3b" path="res://assets/islands/cascade-sheet.png" id="6_tidd6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dtg1"]
+atlas = ExtResource("6_tidd6")
+region = Rect2(0, 0, 24, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jh70"]
+atlas = ExtResource("6_tidd6")
+region = Rect2(24, 0, 24, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glqls"]
+atlas = ExtResource("6_tidd6")
+region = Rect2(48, 0, 24, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umscr"]
+atlas = ExtResource("6_tidd6")
+region = Rect2(72, 0, 24, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq1hn"]
+atlas = ExtResource("6_tidd6")
+region = Rect2(96, 0, 24, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcynm"]
+atlas = ExtResource("6_tidd6")
+region = Rect2(120, 0, 24, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cd0ff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dtg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jh70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glqls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umscr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vq1hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcynm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm0ir"]
 texture = ExtResource("1_wluma")
@@ -464,6 +517,33 @@ sources/0 = SubResource("TileSetAtlasSource_cm0ir")
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [346.0, -302.0, 302.0]
 
+[node name="background-heaven" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="background-heaven"]
+
+[node name="Sprite2D" type="Sprite2D" parent="background-heaven/CanvasLayer"]
+texture_filter = 1
+position = Vector2(-97, 103)
+scale = Vector2(3, 3)
+texture = ExtResource("4_1rx1q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="background-heaven/CanvasLayer"]
+texture_filter = 1
+position = Vector2(-91, 64)
+scale = Vector2(3, 3)
+texture = ExtResource("5_22pci")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="background-heaven/CanvasLayer"]
+color = Color(0.635294, 0.643137, 0.772549, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="background-heaven/CanvasLayer"]
+texture_filter = 1
+position = Vector2(5, 138)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_cd0ff")
+autoplay = "default"
+frame_progress = 0.738407
+
 [node name="TileMap" type="TileMap" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
@@ -474,9 +554,9 @@ layer_0/tile_data = PackedInt32Array(-655374, 393216, 0, -655373, 458752, 0, -65
 script = ExtResource("2_pw11e")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_fomvq")]
-position = Vector2(147, 25)
+position = Vector2(-408, 142)
+scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-limit_top = -360
-limit_bottom = 360
+limit_bottom = 600
 position_smoothing_enabled = true

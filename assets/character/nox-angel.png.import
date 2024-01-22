@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds25ttald082w"
-path="res://.godot/imported/Jump (32x32).png-cff7f5d4dc23bc56705cd83f05776dd2.ctex"
+uid="uid://b4r1h6b84rsv"
+path="res://.godot/imported/nox-angel.png-2d4be16928c1dbed30eeaa2e62526cc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Jump (32x32).png"
-dest_files=["res://.godot/imported/Jump (32x32).png-cff7f5d4dc23bc56705cd83f05776dd2.ctex"]
+source_file="res://assets/character/nox-angel.png"
+dest_files=["res://.godot/imported/nox-angel.png-2d4be16928c1dbed30eeaa2e62526cc1.ctex"]
 
 [params]
 
