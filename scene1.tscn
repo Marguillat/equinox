@@ -529,7 +529,7 @@ texture = ExtResource("4_1rx1q")
 
 [node name="Sprite2D2" type="Sprite2D" parent="background-heaven/CanvasLayer"]
 texture_filter = 1
-position = Vector2(-91, 64)
+position = Vector2(-97, 103)
 scale = Vector2(3, 3)
 texture = ExtResource("5_22pci")
 
@@ -542,7 +542,7 @@ position = Vector2(5, 138)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_cd0ff")
 autoplay = "default"
-frame_progress = 0.738407
+frame_progress = 0.678325
 
 [node name="TileMap" type="TileMap" parent="."]
 unique_name_in_owner = true
