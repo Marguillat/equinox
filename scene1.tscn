@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7s3c3gnuy4f6"]
+[gd_scene load_steps=15 format=3 uid="uid://c7s3c3gnuy4f6"]
 
 [ext_resource type="Texture2D" uid="uid://diw3rjuduuxl0" path="res://assets/background/angel-background.png" id="1_3rotn"]
 [ext_resource type="Texture2D" uid="uid://4ujhfqyl0f8r" path="res://assets/Terrain (16x16).png" id="1_wluma"]
@@ -7,7 +7,39 @@
 [ext_resource type="PackedScene" uid="uid://lcsndwopr4xx" path="res://character.tscn" id="2_fomvq"]
 [ext_resource type="Script" path="res://TileMap.gd" id="2_pw11e"]
 [ext_resource type="Texture2D" uid="uid://cb1xbiaeu4jlt" path="res://assets/background/enfer-background.png" id="3_abqto"]
+[ext_resource type="Texture2D" uid="uid://2gvnnw0m0ymc" path="res://assets/background/EnferNuageCaillou.png" id="5_6goy5"]
+[ext_resource type="Texture2D" uid="uid://cknh2fknplhpx" path="res://assets/background/EnferSecondPlan.png" id="6_f43u4"]
 [ext_resource type="PackedScene" uid="uid://bxo7bufixlw8d" path="res://spikesLine.tscn" id="6_qb1rw"]
+[ext_resource type="Texture2D" uid="uid://n8eggg2pg0t2" path="res://assets/background/EnferPremierPlan.png" id="7_wjjm8"]
+
+[sub_resource type="GDScript" id="GDScript_6potg"]
+resource_name = "shakeCamera"
+script/source = "extends Camera2D
+
+@export var RandomStrength: float = 30.0
+@export var ShadeFade:float = 5.0
+
+var rng = RandomNumberGenerator.new()
+
+var shake_stregth:float = 0.0
+
+func applyShake():
+	shake_stregth = RandomStrength
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if Input.is_action_just_pressed(\"switch\"):
+		applyShake()
+	if shake_stregth >0:
+		shake_stregth = lerpf(shake_stregth,0,ShadeFade * delta)
+		
+		offset = randomOffset()
+	
+
+func randomOffset()-> Vector2:
+	return Vector2(rng.randf_range(-shake_stregth,shake_stregth),rng.randf_range(-shake_stregth,shake_stregth))
+	
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jlm48"]
 texture = ExtResource("1_wluma")
@@ -1387,8 +1419,9 @@ sources/0 = SubResource("TileSetAtlasSource_jlm48")
 
 [node name="tutoriel" type="Node2D"]
 script = ExtResource("1_y1pud")
+level = null
 metadata/_edit_horizontal_guides_ = [614.0, -322.0, 686.0, 475.0]
-metadata/_edit_vertical_guides_ = [-339.0, 2829.0]
+metadata/_edit_vertical_guides_ = [-339.0, 2448.0, 1222.0]
 
 [node name="background-heaven" type="Node2D" parent="."]
 
@@ -1440,7 +1473,7 @@ unique_name_in_owner = true
 
 [node name="background" type="ParallaxLayer" parent="background-heaven/CanvasLayer/hell-paralax"]
 motion_scale = Vector2(0.3, 1)
-motion_mirroring = Vector2(2446, 0)
+motion_mirroring = Vector2(2448, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="background-heaven/CanvasLayer/hell-paralax/background"]
 texture_filter = 1
@@ -1450,9 +1483,53 @@ texture = ExtResource("3_abqto")
 
 [node name="Sprite2D2" type="Sprite2D" parent="background-heaven/CanvasLayer/hell-paralax/background"]
 texture_filter = 1
-position = Vector2(1836, -254)
+position = Vector2(1835, -252)
 scale = Vector2(-2, -2)
 texture = ExtResource("3_abqto")
+
+[node name="Sprite2D3" type="Sprite2D" parent="background-heaven/CanvasLayer/hell-paralax/background"]
+texture_filter = 1
+position = Vector2(611, -253)
+scale = Vector2(2, -2)
+texture = ExtResource("5_6goy5")
+
+[node name="Sprite2D4" type="Sprite2D" parent="background-heaven/CanvasLayer/hell-paralax/background"]
+texture_filter = 1
+position = Vector2(1835, -253)
+scale = Vector2(-2, -2)
+texture = ExtResource("5_6goy5")
+
+[node name="middleground" type="ParallaxLayer" parent="background-heaven/CanvasLayer/hell-paralax"]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(2448, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="background-heaven/CanvasLayer/hell-paralax/middleground"]
+texture_filter = 1
+position = Vector2(611, -233)
+scale = Vector2(2, -2)
+texture = ExtResource("6_f43u4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="background-heaven/CanvasLayer/hell-paralax/middleground"]
+texture_filter = 1
+position = Vector2(1834, -233)
+scale = Vector2(-2, -2)
+texture = ExtResource("6_f43u4")
+
+[node name="foreground" type="ParallaxLayer" parent="background-heaven/CanvasLayer/hell-paralax"]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(2248, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="background-heaven/CanvasLayer/hell-paralax/foreground"]
+texture_filter = 1
+position = Vector2(612, -236)
+scale = Vector2(2, -2)
+texture = ExtResource("7_wjjm8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="background-heaven/CanvasLayer/hell-paralax/foreground"]
+texture_filter = 1
+position = Vector2(1836, -236)
+scale = Vector2(-2, -2)
+texture = ExtResource("7_wjjm8")
 
 [node name="player" parent="." instance=ExtResource("2_fomvq")]
 position = Vector2(47, 388)
@@ -1462,6 +1539,7 @@ scale = Vector2(2, 2)
 limit_left = 0
 limit_bottom = 480
 position_smoothing_enabled = true
+script = SubResource("GDScript_6potg")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
