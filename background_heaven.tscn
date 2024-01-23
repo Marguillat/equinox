@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4n0yoo4q15y8"]
+
+[ext_resource type="Texture2D" uid="uid://diw3rjuduuxl0" path="res://assets/background/angel-background.png" id="1_5gnis"]
+[ext_resource type="Texture2D" uid="uid://c411wvirxffyr" path="res://assets/background/angel-foreground.png" id="2_p5t4v"]
+
+[node name="background-heaven" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="heaven-paralax" type="ParallaxBackground" parent="CanvasLayer"]
+unique_name_in_owner = true
+
+[node name="background" type="ParallaxLayer" parent="CanvasLayer/heaven-paralax"]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(1210, 0)
+
+[node name="angelbackground" type="Sprite2D" parent="CanvasLayer/heaven-paralax/background"]
+texture_filter = 1
+position = Vector2(609, 259)
+scale = Vector2(2, 2)
+texture = ExtResource("1_5gnis")
+
+[node name="foreground" type="ParallaxLayer" parent="CanvasLayer/heaven-paralax"]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(2554, 0)
+
+[node name="angel-foreground" type="Sprite2D" parent="CanvasLayer/heaven-paralax/foreground"]
+texture_filter = 1
+position = Vector2(644, 252)
+scale = Vector2(2, 2)
+texture = ExtResource("2_p5t4v")
+
+[node name="angel-foreground2" type="Sprite2D" parent="CanvasLayer/heaven-paralax/foreground"]
+texture_filter = 1
+position = Vector2(1853, 258)
+scale = Vector2(2, 2)
+texture = ExtResource("2_p5t4v")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer/heaven-paralax"]
+color = Color(0.8, 0.87451, 0.921569, 1)

@@ -1,8 +1,112 @@
-[gd_scene load_steps=5 format=3 uid="uid://lcsndwopr4xx"]
+[gd_scene load_steps=20 format=3 uid="uid://lcsndwopr4xx"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_76ijd"]
-[ext_resource type="Texture2D" uid="uid://b4r1h6b84rsv" path="res://assets/character/nox-angel.png" id="2_0rev3"]
 [ext_resource type="PackedScene" uid="uid://c6co1eteca5wo" path="res://rémanance.tscn" id="2_r38rx"]
+[ext_resource type="Texture2D" uid="uid://bp7iuf1eq3j3k" path="res://assets/character/nox-idle-hell.png" id="3_3xwx4"]
+[ext_resource type="Texture2D" uid="uid://dkglodxuc55kk" path="res://assets/character/skeleton-nox-angel.png" id="3_ac4ln"]
+[ext_resource type="Texture2D" uid="uid://bb2atnhe4ifk8" path="res://assets/character/nox-run-hell.png" id="4_hr0k7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_damfo"]
+atlas = ExtResource("3_ac4ln")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7y0p"]
+atlas = ExtResource("3_3xwx4")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dowx"]
+atlas = ExtResource("3_3xwx4")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctual"]
+atlas = ExtResource("4_hr0k7")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrn1b"]
+atlas = ExtResource("4_hr0k7")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbtfd"]
+atlas = ExtResource("4_hr0k7")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ves3"]
+atlas = ExtResource("4_hr0k7")
+region = Rect2(1920, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4fom"]
+atlas = ExtResource("4_hr0k7")
+region = Rect2(2560, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2y73"]
+atlas = ExtResource("4_hr0k7")
+region = Rect2(3200, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hqdt"]
+atlas = ExtResource("4_hr0k7")
+region = Rect2(3840, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsntn"]
+atlas = ExtResource("4_hr0k7")
+region = Rect2(4480, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs0l6"]
+atlas = ExtResource("4_hr0k7")
+region = Rect2(5120, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0a1lc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_damfo")
+}],
+"loop": true,
+"name": &"idle-heaven",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7y0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dowx")
+}],
+"loop": true,
+"name": &"idle-hell",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctual")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrn1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbtfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ves3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4fom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2y73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hqdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsntn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs0l6")
+}],
+"loop": true,
+"name": &"run-hell",
+"speed": 15.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6rd4l"]
 radius = 7.0
@@ -12,15 +116,19 @@ height = 34.0
 script = ExtResource("1_76ijd")
 r_node = ExtResource("2_r38rx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
-texture = ExtResource("2_0rev3")
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_0a1lc")
+animation = &"idle-hell"
+autoplay = "idle-hell"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 8)
 shape = SubResource("CapsuleShape2D_6rd4l")
 
 [node name="TimerRemanance" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.05
 
 [connection signal="timeout" from="TimerRemanance" to="." method="_on_timer_remanance_timeout"]
