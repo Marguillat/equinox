@@ -18,6 +18,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #process physics and movement
 func _physics_process(delta):
+	
+	#var lyer = get_meta("death")
+	#print(lyer)
+	
 	if is_on_floor():
 		simple_dash = 0
 	
@@ -29,8 +33,9 @@ func _physics_process(delta):
 		animated_sprite_2d.play("idle-"+ tile_map.realm)
 	
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor(): 
 		velocity.y += gravity * delta
+		animated_sprite_2d.play("jump-"+tile_map.realm)
 
 	# Handle jump.
 	if (Input.is_action_just_pressed("jump") and is_on_floor()):
@@ -51,6 +56,7 @@ func _physics_process(delta):
 	move_and_slide()
 	var isLeft = velocity.x < 0
 	animated_sprite_2d.flip_h = isLeft
+	
 
 #créée l'image rémanante
 func add_ghost():
@@ -69,7 +75,7 @@ func dash():
 	var previous_gravity = gravity
 	gravity = 0
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", position + velocity * dashSpeedMultiplicator,0.30)
+	tween.tween_property(self, "position", position + velocity * dashSpeedMultiplicator,0.20)
 	
 	await tween.finished
 	timer_remanance.stop()
@@ -79,3 +85,6 @@ func _input(event):
 	if event.is_action_pressed("dash") && (tile_map.realm == "hell") && simple_dash == 0:
 		dash()
 		simple_dash = 1
+		
+func die():
+	queue_free()

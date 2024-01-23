@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxo7bufixlw8d"]
+
+[ext_resource type="PackedScene" uid="uid://c17p114f0pgui" path="res://spikes.tscn" id="1_skcjj"]
+
+[node name="spikes" type="Node2D"]
+
+[node name="spikes" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(757, -450)
+
+[node name="spikes2" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(796, -450)
+
+[node name="spikes3" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(835, -450)
+
+[node name="spikes4" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(874, -450)
+
+[node name="spikes5" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(913, -450)
+
+[node name="spikes6" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(952, -450)
+
+[node name="spikes7" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(991, -450)
+
+[node name="spikes8" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1030, -450)
+
+[node name="spikes9" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1069, -450)
+
+[node name="spikes10" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1108, -450)
+
+[node name="spikes11" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1160, -451)
+
+[node name="spikes12" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1199, -451)
+
+[node name="spikes13" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1238, -451)
+
+[node name="spikes14" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1277, -451)
+
+[node name="spikes15" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1316, -451)
+
+[node name="spikes16" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1355, -451)
+
+[node name="spikes17" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1402, -450)
+
+[node name="spikes18" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1441, -450)
+
+[node name="spikes19" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1480, -450)
+
+[node name="spikes20" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1519, -450)
+
+[node name="spikes21" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1558, -450)
+
+[node name="spikes22" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1597, -450)
+
+[node name="spikes23" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1636, -450)
+
+[node name="spikes24" parent="." instance=ExtResource("1_skcjj")]
+position = Vector2(1675, -450)

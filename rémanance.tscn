@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6co1eteca5wo"]
 
-[ext_resource type="Texture2D" uid="uid://b4r1h6b84rsv" path="res://assets/character/nox-angel.png" id="1_p5cr7"]
+[ext_resource type="Texture2D" uid="uid://ywk0q5nl7hv3" path="res://assets/character/nox-run.png" id="1_rae45"]
 [ext_resource type="Script" path="res://Rémanance.gd" id="2_40pjn"]
 
 [node name="Rémanance" type="Sprite2D"]
 modulate = Color(0.917647, 0.917647, 0.917647, 1)
 show_behind_parent = true
 texture_filter = 1
-texture = ExtResource("1_p5cr7")
+texture = ExtResource("1_rae45")
 script = ExtResource("2_40pjn")
