@@ -1419,7 +1419,6 @@ sources/0 = SubResource("TileSetAtlasSource_jlm48")
 
 [node name="tutoriel" type="Node2D"]
 script = ExtResource("1_y1pud")
-level = null
 metadata/_edit_horizontal_guides_ = [614.0, -322.0, 686.0, 475.0]
 metadata/_edit_vertical_guides_ = [-339.0, 2448.0, 1222.0]
 
