@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://bklhvypg18jgd"]
+
+[ext_resource type="Texture2D" uid="uid://diw3rjuduuxl0" path="res://assets/background/angel-background.png" id="2_8ysx2"]
+[ext_resource type="Texture2D" uid="uid://dcps57105h0uv" path="res://assets/bouton/button-play.png" id="2_m7mko"]
+[ext_resource type="Texture2D" uid="uid://dgs41ec8btcxp" path="res://assets/logo/equinox_logo.png" id="3_dk4ll"]
+[ext_resource type="Texture2D" uid="uid://cs6aifa1au7ed" path="res://assets/bouton/button-credits.png" id="4_r3qur"]
+
+[sub_resource type="GDScript" id="GDScript_p5yt5"]
+resource_name = "menu"
+script/source = "extends Control
+
+func _ready():
+	pass # Replace with function body.
+
+func _on_play_but_pressed():
+	get_tree().change_scene_to_file(\"res://niveaux/scene1.tscn\")
+
+func _on_credit_but_pressed():
+	get_tree().change_scene_to_file(\"res://scene1.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_u56y2"]
+resource_name = "bouton-focus-controller"
+script/source = "extends Button
+
+func _ready():
+	grab_focus()
+"
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_p5yt5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8ysx2")
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = 68.0
+offset_right = 175.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(82, -176)
+scale = Vector2(0.205357, 0.205357)
+texture = ExtResource("3_dk4ll")
+
+[node name="PlayBut" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+script = SubResource("GDScript_u56y2")
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/PlayBut"]
+texture_filter = 1
+position = Vector2(139, 51)
+scale = Vector2(0.463091, 0.463091)
+texture = ExtResource("2_m7mko")
+
+[node name="CreditBut" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+focus_neighbor_left = NodePath("../PlayBut")
+theme_override_font_sizes/font_size = 32
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/CreditBut"]
+position = Vector2(140, 51)
+scale = Vector2(0.468975, 0.468975)
+texture = ExtResource("4_r3qur")
+
+[connection signal="pressed" from="VBoxContainer/PlayBut" to="." method="_on_play_but_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditBut" to="." method="_on_play_but_pressed"]

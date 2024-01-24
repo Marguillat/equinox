@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 
 const SPEED = 500.0
-const dashSpeedMultiplicator = 1.5
+
 const JUMP_VELOCITY = -400.0
 var dooble_jump = 0
 var simple_dash = 0
@@ -43,8 +43,8 @@ func _physics_process(delta):
 	# Handle jump.
 	if (Input.is_action_just_pressed("jump") and is_on_floor()):
 		velocity.y = JUMP_VELOCITY
-		dooble_jump = 0
-	elif Input.is_action_just_pressed("jump") and dooble_jump == 0 and tile_map.realm == "heaven" :
+		dooble_jump = 1
+	elif Input.is_action_just_pressed("jump") and dooble_jump == 1 and tile_map.realm == "heaven" :
 		velocity.y = JUMP_VELOCITY * 1.4
 		dooble_jump=dooble_jump+1
 
@@ -76,9 +76,9 @@ func dash():
 	timer_remanance.start()
 	velocity.y = 0
 	var previous_gravity = gravity
-	gravity = 0
+	gravity = 100
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", position + velocity * dashSpeedMultiplicator,0.20)
+	tween.tween_property(self, "position", position + velocity,0.20)
 	
 	await tween.finished
 	timer_remanance.stop()

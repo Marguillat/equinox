@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b67yg5an17ryp"]
+[gd_scene load_steps=4 format=3 uid="uid://h27ris6xjun5"]
 
-[ext_resource type="Texture2D" uid="uid://mwjjiqt5p35u" path="res://assets/islands/Portail.png" id="1_xyxor"]
+[ext_resource type="Texture2D" path="res://assets/islands/Portail.png" id="1_xyxor"]
 
 [sub_resource type="GDScript" id="GDScript_3lx4j"]
 resource_name = "portal"
