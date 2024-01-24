@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bklhvypg18jgd"]
+[gd_scene load_steps=11 format=3 uid="uid://bklhvypg18jgd"]
 
 [ext_resource type="Texture2D" uid="uid://diw3rjuduuxl0" path="res://assets/background/angel-background.png" id="2_8ysx2"]
 [ext_resource type="Texture2D" uid="uid://dcps57105h0uv" path="res://assets/bouton/button-play.png" id="2_m7mko"]
@@ -19,6 +19,13 @@ func _on_credit_but_pressed():
 	get_tree().change_scene_to_file(\"res://scene1.tscn\")
 "
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6krf"]
+texture = ExtResource("2_m7mko")
+modulate_color = Color(0.729412, 0.729412, 0.729412, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ucyo"]
+texture = ExtResource("2_m7mko")
+
 [sub_resource type="GDScript" id="GDScript_u56y2"]
 resource_name = "bouton-focus-controller"
 script/source = "extends Button
@@ -26,6 +33,13 @@ script/source = "extends Button
 func _ready():
 	grab_focus()
 "
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_81tel"]
+texture = ExtResource("4_r3qur")
+modulate_color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kxhog"]
+texture = ExtResource("4_r3qur")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -70,28 +84,19 @@ texture = ExtResource("3_dk4ll")
 
 [node name="PlayBut" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_n6krf")
+theme_override_styles/focus = SubResource("StyleBoxTexture_7ucyo")
 script = SubResource("GDScript_u56y2")
-
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/PlayBut"]
-texture_filter = 1
-position = Vector2(139, 51)
-scale = Vector2(0.463091, 0.463091)
-texture = ExtResource("2_m7mko")
 
 [node name="CreditBut" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 3
 focus_neighbor_left = NodePath("../PlayBut")
 theme_override_font_sizes/font_size = 32
-
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/CreditBut"]
-position = Vector2(140, 51)
-scale = Vector2(0.468975, 0.468975)
-texture = ExtResource("4_r3qur")
+theme_override_styles/normal = SubResource("StyleBoxTexture_81tel")
+theme_override_styles/focus = SubResource("StyleBoxTexture_kxhog")
 
 [connection signal="pressed" from="VBoxContainer/PlayBut" to="." method="_on_play_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditBut" to="." method="_on_play_but_pressed"]
