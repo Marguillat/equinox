@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game Jam"
-run/main_scene="res://scene1.tscn"
+run/main_scene="res://niveaux/scene1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
 [display]
@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/mode=2
+window/size/resizable=false
 
 [input]
 

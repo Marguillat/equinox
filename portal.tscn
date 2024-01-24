@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://b67yg5an17ryp"]
+
+[ext_resource type="Texture2D" uid="uid://mwjjiqt5p35u" path="res://assets/islands/Portail.png" id="1_xyxor"]
+
+[sub_resource type="GDScript" id="GDScript_3lx4j"]
+resource_name = "portal"
+script/source = "extends Area2D
+
+@export var next_level: PackedScene
+
+func _on_body_entered(body):
+	if body.name == \"player\":
+		get_tree().change_scene_to_packed(next_level)
+
+
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhaf5"]
+size = Vector2(70, 76)
+
+[node name="Node2D" type="Area2D"]
+script = SubResource("GDScript_3lx4j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-3, -35)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_xyxor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -38)
+shape = SubResource("RectangleShape2D_fhaf5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,7 +3,7 @@ extends TileMap
 @onready var heaven_paralax = %"heaven-paralax"
 @onready var hell_paralax = %"hell-paralax"
 @export var realm = "heaven"
-@onready var trap = %trap
+@onready var static_objects = %"static objects"
 
 
 
@@ -12,7 +12,7 @@ func _process(delta):
 		tile_map.scale.y = (tile_map.scale.y) * -1
 		heaven_paralax.scale.y *= -1
 		hell_paralax.scale.y *= -1
-		trap.scale.y *= -1
+		static_objects.scale.y *= -1
 		if heaven_paralax.offset.y == 1050 :
 			heaven_paralax.offset.y = 0
 		else:
