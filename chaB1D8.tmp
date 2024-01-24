@@ -182,7 +182,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_6xj8t")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump-hell",
 "speed": 5.0
 }, {
@@ -262,8 +262,8 @@ const flap = preload(\"res://assets/sound/angel-flap-sound.mp3\")
 #const running = preload()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#if(player.is_on_floor_only() && (player.velocity.x > 1 || player.velocity.x < 1)):
-		##stream = running
+	if(player.is_on_floor_only() && (player.velocity.x > 1 || player.velocity.x < 1)):
+		#stream = running
 	
 	if (Input.is_action_just_pressed(\"jump\")):
 		if (tile_map.realm == \"heaven\"):
@@ -293,7 +293,7 @@ wait_time = 0.05
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("9_5ca02")
-volume_db = -0.929
+volume_db = -7.429
 script = SubResource("GDScript_1op30")
 
 [connection signal="timeout" from="TimerRemanance" to="." method="_on_timer_remanance_timeout"]

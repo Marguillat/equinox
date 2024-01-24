@@ -25,19 +25,19 @@ func _physics_process(delta):
 	if is_on_floor():
 		simple_dash = 0
 	
-	#anim les personages
-	if (velocity.x > 1) || (velocity.x < -1) :
-		## on utilise play() au lieu de .animation pour éviter les beugs de première frame 
-		animated_sprite_2d.play("run-" + tile_map.realm)
-	else:
-		animated_sprite_2d.play("idle-"+ tile_map.realm)
+		#anim les personages
+		if (velocity.x > 1) || (velocity.x < -1) :
+			## on utilise play() au lieu de .animation pour éviter les beugs de première frame 
+			animated_sprite_2d.play("run-" + tile_map.realm)
+		else:
+			animated_sprite_2d.play("idle-"+ tile_map.realm)
 	
 	# Add the gravity.
 	if not is_on_floor(): 
 		velocity.y += gravity * delta
-		if velocity.y > 1:
-			animated_sprite_2d.play("jump-"+tile_map.realm)
-		elif velocity.y < 1:
+		if velocity.y < 1:
+			animated_sprite_2d.animation = "jump-" + tile_map.realm
+		elif velocity.y > 1:
 			animated_sprite_2d.play("fall-"+tile_map.realm)
 
 	# Handle jump.

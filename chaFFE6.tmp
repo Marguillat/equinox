@@ -182,7 +182,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_6xj8t")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump-hell",
 "speed": 5.0
 }, {
@@ -293,7 +293,7 @@ wait_time = 0.05
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("9_5ca02")
-volume_db = -0.929
+volume_db = -7.429
 script = SubResource("GDScript_1op30")
 
 [connection signal="timeout" from="TimerRemanance" to="." method="_on_timer_remanance_timeout"]
