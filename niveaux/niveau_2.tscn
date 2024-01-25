@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c02nonxftr6x"]
+[gd_scene load_steps=36 format=3 uid="uid://c02nonxftr6x"]
 
 [ext_resource type="Texture2D" uid="uid://diw3rjuduuxl0" path="res://assets/background/angel-background.png" id="1_wxiv5"]
 [ext_resource type="Texture2D" uid="uid://c411wvirxffyr" path="res://assets/background/angel-foreground.png" id="2_pngc1"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://h27ris6xjun5" path="res://portal.tscn" id="12_2lbeh"]
 [ext_resource type="PackedScene" uid="uid://bklhvypg18jgd" path="res://menu.tscn" id="13_c3usx"]
 [ext_resource type="Texture2D" uid="uid://da5vpuyuidri8" path="res://assets/traps/arbre_en_feu-Sheet.png" id="14_320yt"]
+[ext_resource type="Texture2D" uid="uid://bcfv08pascx3b" path="res://assets/islands/cascade-sheet.png" id="15_k8app"]
+[ext_resource type="Texture2D" uid="uid://ypgcajde5tsf" path="res://assets/islands/rip2.png" id="16_ek05h"]
 
 [sub_resource type="GDScript" id="GDScript_f7xd6"]
 resource_name = "niveau 2 respawn"
@@ -1490,6 +1492,56 @@ gradient = SubResource("Gradient_ebeto")
 fill = 1
 fill_from = Vector2(0.475, 0.49)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7dx4"]
+atlas = ExtResource("15_k8app")
+region = Rect2(0, 0, 24, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haow4"]
+atlas = ExtResource("15_k8app")
+region = Rect2(24, 0, 24, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yukx"]
+atlas = ExtResource("15_k8app")
+region = Rect2(48, 0, 24, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvyh7"]
+atlas = ExtResource("15_k8app")
+region = Rect2(72, 0, 24, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3ix1"]
+atlas = ExtResource("15_k8app")
+region = Rect2(96, 0, 24, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbv2y"]
+atlas = ExtResource("15_k8app")
+region = Rect2(120, 0, 24, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vsoi6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7dx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haow4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yukx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvyh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3ix1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbv2y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="niveau 2" type="Node2D"]
 script = SubResource("GDScript_f7xd6")
 metadata/_edit_vertical_guides_ = [4604.0]
@@ -1750,7 +1802,7 @@ position = Vector2(2263, -256)
 scale = Vector2(2, -2)
 sprite_frames = SubResource("SpriteFrames_skqj3")
 autoplay = "default"
-frame_progress = 0.579221
+frame_progress = 0.88628
 
 [node name="PointLight2D" type="PointLight2D" parent="static objects/AnimatedSprite2D"]
 show_behind_parent = true
@@ -1758,5 +1810,18 @@ position = Vector2(5.5, -6)
 scale = Vector2(1.67969, 1.67969)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_3algh")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="static objects"]
+texture_filter = 1
+position = Vector2(1278, 123)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vsoi6")
+autoplay = "default"
+
+[node name="Rip2" type="Sprite2D" parent="static objects"]
+texture_filter = 1
+position = Vector2(1007, -165)
+scale = Vector2(0.2, -0.2)
+texture = ExtResource("16_ek05h")
 
 [connection signal="tree_exited" from="player" to="." method="_on_player_tree_exited"]
