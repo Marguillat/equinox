@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bxo7bufixlw8d" path="res://spikesLine.tscn" id="10_28bdc"]
 [ext_resource type="PackedScene" uid="uid://c17p114f0pgui" path="res://spikes.tscn" id="11_054gw"]
 [ext_resource type="PackedScene" uid="uid://h27ris6xjun5" path="res://portal.tscn" id="12_2lbeh"]
-[ext_resource type="PackedScene" uid="uid://bklhvypg18jgd" path="res://menu.tscn" id="13_c3usx"]
+[ext_resource type="PackedScene" uid="uid://cu5yv2c7ktti0" path="res://credits.tscn" id="13_74hce"]
 [ext_resource type="Texture2D" uid="uid://da5vpuyuidri8" path="res://assets/traps/arbre_en_feu-Sheet.png" id="14_320yt"]
 [ext_resource type="Texture2D" uid="uid://bcfv08pascx3b" path="res://assets/islands/cascade-sheet.png" id="15_k8app"]
 [ext_resource type="Texture2D" uid="uid://ypgcajde5tsf" path="res://assets/islands/rip2.png" id="16_ek05h"]
@@ -1794,7 +1794,7 @@ rotation = 1.5708
 [node name="Node2D" parent="static objects" instance=ExtResource("12_2lbeh")]
 position = Vector2(4501, -449)
 scale = Vector2(2, -2)
-next_level = ExtResource("13_c3usx")
+next_level = ExtResource("13_74hce")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="static objects"]
 texture_filter = 1

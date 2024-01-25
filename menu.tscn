@@ -1,6 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bklhvypg18jgd"]
+[gd_scene load_steps=15 format=3 uid="uid://bklhvypg18jgd"]
 
+[ext_resource type="PackedScene" uid="uid://cu5yv2c7ktti0" path="res://credits.tscn" id="1_ffaih"]
 [ext_resource type="Texture2D" uid="uid://diw3rjuduuxl0" path="res://assets/background/angel-background.png" id="2_8ysx2"]
+[ext_resource type="PackedScene" uid="uid://c7s3c3gnuy4f6" path="res://niveaux/scene1.tscn" id="2_h8lyo"]
 [ext_resource type="Texture2D" uid="uid://dcps57105h0uv" path="res://assets/bouton/button-play.png" id="2_m7mko"]
 [ext_resource type="Texture2D" uid="uid://dgs41ec8btcxp" path="res://assets/logo/equinox_logo.png" id="3_dk4ll"]
 [ext_resource type="Texture2D" uid="uid://cs6aifa1au7ed" path="res://assets/bouton/button-credits.png" id="4_r3qur"]
@@ -8,15 +10,17 @@
 [sub_resource type="GDScript" id="GDScript_p5yt5"]
 resource_name = "menu"
 script/source = "extends Control
+@export var packedCredit : PackedScene
+@export var packedLvl1 : PackedScene
 
 func _ready():
 	pass # Replace with function body.
 
 func _on_play_but_pressed():
-	get_tree().change_scene_to_file(\"res://niveaux/scene1.tscn\")
+	get_tree().change_scene_to_packed(packedLvl1)
 
 func _on_credit_but_pressed():
-	get_tree().change_scene_to_file(\"res://credits.tscn\")
+	get_tree().change_scene_to_packed(packedCredit)
 "
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6krf"]
@@ -56,6 +60,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_p5yt5")
+packedCredit = ExtResource("1_ffaih")
+packedLvl1 = ExtResource("2_h8lyo")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -109,3 +115,4 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_kxhog")
 
 [connection signal="pressed" from="VBoxContainer/PlayBut" to="." method="_on_play_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditBut" to="." method="_on_play_but_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditBut" to="." method="_on_credit_but_pressed"]
