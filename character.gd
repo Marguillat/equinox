@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var timer_remanance = $TimerRemanance
 @onready var tile_map = $"../TileMap"
 @onready var animated_sprite_2d = %AnimatedSprite2D
+@onready var death = $death
 
 
 const SPEED = 500.0
@@ -60,7 +61,7 @@ func _physics_process(delta):
 	var isLeft = velocity.x < 0
 	animated_sprite_2d.flip_h = isLeft
 	
-
+#################################################
 #créée l'image rémanante
 func add_ghost():
 	var ghost = r_node.instantiate()
@@ -75,6 +76,8 @@ func dash():
 	#start timer
 	timer_remanance.start()
 	velocity.y = 0
+	if velocity.x == 0 :
+		velocity.x = 1*SPEED
 	var previous_gravity = gravity
 	gravity = 100
 	var tween = get_tree().create_tween()
@@ -84,10 +87,17 @@ func dash():
 	timer_remanance.stop()
 	gravity = previous_gravity
 
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout
+
 func _input(event):
 	if event.is_action_pressed("dash") && (tile_map.realm == "hell") && simple_dash == 0:
 		dash()
 		simple_dash = 1
 		
 func die():
+	visible = false
+	death.play()
+	await wait(2.0)
 	queue_free()
+

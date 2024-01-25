@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://lcsndwopr4xx"]
+[gd_scene load_steps=49 format=3 uid="uid://lcsndwopr4xx"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_76ijd"]
 [ext_resource type="PackedScene" uid="uid://c6co1eteca5wo" path="res://rémanance.tscn" id="2_r38rx"]
@@ -6,11 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://dkglodxuc55kk" path="res://assets/character/skeleton-nox-angel.png" id="3_ac4ln"]
 [ext_resource type="Texture2D" uid="uid://cihxwbk5u0syy" path="res://assets/character/skeleton-nox-fall-angel-Sheet-export.png" id="3_n2n1q"]
 [ext_resource type="Texture2D" uid="uid://bb2atnhe4ifk8" path="res://assets/character/nox-run-hell.png" id="4_hr0k7"]
+[ext_resource type="Texture2D" uid="uid://cgpx6foi1ibm3" path="res://assets/character/skeleton-nox-angel-idle.png" id="5_k12uh"]
 [ext_resource type="Texture2D" uid="uid://y43hct50a6l4" path="res://assets/character/nox-angel-jump-export.png" id="5_nn815"]
 [ext_resource type="Texture2D" uid="uid://6bkm3ryft7nj" path="res://assets/character/nox-run-Sheet-export.png" id="6_arybb"]
 [ext_resource type="Texture2D" uid="uid://c3dqdakmttsuf" path="res://assets/character/nox-demon-saut.png" id="7_6xj8t"]
 [ext_resource type="AudioStream" uid="uid://d16r51uy70q01" path="res://assets/sound/angel-flap-sound.mp3" id="9_5ca02"]
 [ext_resource type="AudioStream" uid="uid://b1ormowlirks8" path="res://assets/sound/tremblement.mp3" id="11_y6ns2"]
+[ext_resource type="AudioStream" uid="uid://dplyefrerpnrf" path="res://assets/sound/pixel-death-66829.mp3" id="12_k1afm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c7bp6"]
 atlas = ExtResource("3_n2n1q")
@@ -28,9 +30,17 @@ region = Rect2(1280, 0, 640, 640)
 atlas = ExtResource("3_n2n1q")
 region = Rect2(1920, 0, 640, 640)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljoet"]
+atlas = ExtResource("7_6xj8t")
+region = Rect2(0, 0, 640, 640)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_damfo"]
 atlas = ExtResource("3_ac4ln")
 region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0kpc"]
+atlas = ExtResource("5_k12uh")
+region = Rect2(640, 0, 640, 640)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c7y0p"]
 atlas = ExtResource("3_3xwx4")
@@ -145,11 +155,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ljoet")
+}],
+"loop": true,
+"name": &"fall-hell",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_damfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0kpc")
 }],
 "loop": true,
 "name": &"idle-heaven",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -313,7 +334,7 @@ unique_name_in_owner = true
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_0a1lc")
-animation = &"jump-hell"
+animation = &"fall-hell"
 autoplay = "idle-hell"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -325,7 +346,7 @@ wait_time = 0.05
 
 [node name="movement" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_5ca02")
-volume_db = -0.929
+volume_db = 4.642
 script = SubResource("GDScript_1op30")
 
 [node name="capacities" type="AudioStreamPlayer2D" parent="."]
@@ -333,9 +354,12 @@ stream = ExtResource("11_y6ns2")
 pitch_scale = 0.89
 script = SubResource("GDScript_kx06d")
 
-[node name="capacities2" type="AudioStreamPlayer2D" parent="."]
+[node name="world" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_y6ns2")
 pitch_scale = 0.89
 script = SubResource("GDScript_1imtr")
+
+[node name="death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_k1afm")
 
 [connection signal="timeout" from="TimerRemanance" to="." method="_on_timer_remanance_timeout"]

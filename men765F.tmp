@@ -16,7 +16,7 @@ func _on_play_but_pressed():
 	get_tree().change_scene_to_file(\"res://niveaux/scene1.tscn\")
 
 func _on_credit_but_pressed():
-	get_tree().change_scene_to_file(\"res://credits.tscn\")
+	get_tree().change_scene_to_file(\"res://scene1.tscn\")
 "
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6krf"]
@@ -35,8 +35,7 @@ script/source = "extends Button
 
 func _ready():
 	#grab_focus()
-	pass
-"
+	pass"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_81tel"]
 texture = ExtResource("4_r3qur")

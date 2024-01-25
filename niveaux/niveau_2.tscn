@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c02nonxftr6x"]
+[gd_scene load_steps=27 format=3 uid="uid://c02nonxftr6x"]
 
 [ext_resource type="Texture2D" uid="uid://diw3rjuduuxl0" path="res://assets/background/angel-background.png" id="1_wxiv5"]
 [ext_resource type="Texture2D" uid="uid://c411wvirxffyr" path="res://assets/background/angel-foreground.png" id="2_pngc1"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c17p114f0pgui" path="res://spikes.tscn" id="11_054gw"]
 [ext_resource type="PackedScene" uid="uid://h27ris6xjun5" path="res://portal.tscn" id="12_2lbeh"]
 [ext_resource type="PackedScene" uid="uid://bklhvypg18jgd" path="res://menu.tscn" id="13_c3usx"]
+[ext_resource type="Texture2D" uid="uid://da5vpuyuidri8" path="res://assets/traps/arbre_en_feu-Sheet.png" id="14_320yt"]
 
 [sub_resource type="GDScript" id="GDScript_f7xd6"]
 resource_name = "niveau 2 respawn"
@@ -1437,6 +1438,58 @@ custom_data_layer_0/name = "death"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_jlm48")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxe7h"]
+atlas = ExtResource("14_320yt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccyy4"]
+atlas = ExtResource("14_320yt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02tk6"]
+atlas = ExtResource("14_320yt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8ght"]
+atlas = ExtResource("14_320yt")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57usb"]
+atlas = ExtResource("14_320yt")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_skqj3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxe7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccyy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02tk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8ght")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57usb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_ebeto"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 0.858824, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3algh"]
+gradient = SubResource("Gradient_ebeto")
+fill = 1
+fill_from = Vector2(0.475, 0.49)
+
 [node name="niveau 2" type="Node2D"]
 script = SubResource("GDScript_f7xd6")
 metadata/_edit_vertical_guides_ = [4604.0]
@@ -1550,6 +1603,9 @@ texture_filter = 1
 position = Vector2(1836, -236)
 scale = Vector2(-2, -2)
 texture = ExtResource("6_iby3q")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="background-heaven/CanvasLayer/hell-paralax"]
+color = Color(0.976471, 0.545098, 0.415686, 1)
 
 [node name="player" parent="." instance=ExtResource("7_0wb4p")]
 position = Vector2(36, 391)
@@ -1684,8 +1740,23 @@ position = Vector2(4233, -1238)
 rotation = 1.5708
 
 [node name="Node2D" parent="static objects" instance=ExtResource("12_2lbeh")]
-position = Vector2(4502, -445)
+position = Vector2(4501, -449)
 scale = Vector2(2, -2)
 next_level = ExtResource("13_c3usx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="static objects"]
+texture_filter = 1
+position = Vector2(2263, -256)
+scale = Vector2(2, -2)
+sprite_frames = SubResource("SpriteFrames_skqj3")
+autoplay = "default"
+frame_progress = 0.579221
+
+[node name="PointLight2D" type="PointLight2D" parent="static objects/AnimatedSprite2D"]
+show_behind_parent = true
+position = Vector2(5.5, -6)
+scale = Vector2(1.67969, 1.67969)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_3algh")
 
 [connection signal="tree_exited" from="player" to="." method="_on_player_tree_exited"]
