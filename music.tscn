@@ -1,8 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://yc242qg1q856"]
 
-[ext_resource type="AudioStream" uid="uid://b606byjwtprgf" path="res://assets/sound/music.mp3" id="1_3reki"]
+[ext_resource type="AudioStream" uid="uid://dvera1exw8dsk" path="res://assets/sound/deadite-ash-vs-evil-dead-song-8688.mp3" id="1_kuriv"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_3reki")
+stream = ExtResource("1_kuriv")
 volume_db = -8.357
 autoplay = true
+max_distance = 1e+07
+attenuation = 0.0647041

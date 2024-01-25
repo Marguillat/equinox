@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bklhvypg18jgd"]
+[gd_scene load_steps=14 format=3 uid="uid://bklhvypg18jgd"]
 
 [ext_resource type="PackedScene" uid="uid://cu5yv2c7ktti0" path="res://credits.tscn" id="1_ffaih"]
 [ext_resource type="Texture2D" uid="uid://diw3rjuduuxl0" path="res://assets/background/angel-background.png" id="2_8ysx2"]
@@ -10,47 +10,38 @@
 [sub_resource type="GDScript" id="GDScript_p5yt5"]
 resource_name = "menu"
 script/source = "extends Control
-@export var packedCredit : PackedScene
 @export var packedLvl1 : PackedScene
+@export var packedCrédit : PackedScene
+ 
 
-func _ready():
-	pass # Replace with function body.
+func _on_credit_pressed():
+	get_tree().change_scene_to_packed(packedCrédit)
+	
 
-func _on_play_but_pressed():
+
+func _on_jouer_pressed():
 	get_tree().change_scene_to_packed(packedLvl1)
-
-func _on_credit_but_pressed():
-	get_tree().change_scene_to_packed(packedCredit)
 "
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6krf"]
-texture = ExtResource("2_m7mko")
-modulate_color = Color(0.729412, 0.729412, 0.729412, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f8v6r"]
-texture = ExtResource("2_m7mko")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ucyo"]
-texture = ExtResource("2_m7mko")
-
-[sub_resource type="GDScript" id="GDScript_u56y2"]
-resource_name = "bouton-focus-controller"
-script/source = "extends Button
-
-func _ready():
-	#grab_focus()
-	pass
-"
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_81tel"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dep40"]
 texture = ExtResource("4_r3qur")
-modulate_color = Color(0.654902, 0.654902, 0.654902, 1)
+modulate_color = Color(0.8, 0.8, 0.8, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ed8d"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ejalw"]
 texture = ExtResource("4_r3qur")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kxhog"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m1hlt"]
 texture = ExtResource("4_r3qur")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hj21t"]
+texture = ExtResource("2_m7mko")
+modulate_color = Color(0.8, 0.8, 0.8, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4jwci"]
+texture = ExtResource("2_m7mko")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ktdny"]
+texture = ExtResource("2_m7mko")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -60,8 +51,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_p5yt5")
-packedCredit = ExtResource("1_ffaih")
 packedLvl1 = ExtResource("2_h8lyo")
+"packedCrédit" = ExtResource("1_ffaih")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -73,46 +65,44 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_8ysx2")
 stretch_mode = 6
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -103.0
-offset_top = 68.0
-offset_right = 175.0
-offset_bottom = 308.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 35
-alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer"]
-position = Vector2(82, -176)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(925.335, 379.75)
 scale = Vector2(0.205357, 0.205357)
 texture = ExtResource("3_dk4ll")
 
-[node name="PlayBut" type="Button" parent="VBoxContainer"]
+[node name="credit" type="Button" parent="."]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxTexture_n6krf")
-theme_override_styles/hover = SubResource("StyleBoxTexture_f8v6r")
-theme_override_styles/focus = SubResource("StyleBoxTexture_7ucyo")
-script = SubResource("GDScript_u56y2")
+anchor_left = 0.245574
+anchor_top = 0.141319
+anchor_right = 0.245574
+anchor_bottom = 0.141319
+offset_left = 351.0
+offset_top = 526.0
+offset_right = 629.0
+offset_bottom = 606.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_dep40")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ejalw")
+theme_override_styles/focus = SubResource("StyleBoxTexture_m1hlt")
 
-[node name="CreditBut" type="Button" parent="VBoxContainer"]
+[node name="jouer" type="Button" parent="."]
 layout_mode = 2
-size_flags_vertical = 3
-focus_neighbor_left = NodePath("../PlayBut")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxTexture_81tel")
-theme_override_styles/hover = SubResource("StyleBoxTexture_5ed8d")
-theme_override_styles/focus = SubResource("StyleBoxTexture_kxhog")
+anchor_left = 0.245574
+anchor_top = 0.141319
+anchor_right = 0.245574
+anchor_bottom = 0.141319
+offset_left = 351.0
+offset_top = 439.0
+offset_right = 629.0
+offset_bottom = 519.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_hj21t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4jwci")
+theme_override_styles/focus = SubResource("StyleBoxTexture_ktdny")
 
-[connection signal="pressed" from="VBoxContainer/PlayBut" to="." method="_on_play_but_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditBut" to="." method="_on_play_but_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditBut" to="." method="_on_credit_but_pressed"]
+[connection signal="pressed" from="credit" to="." method="_on_credit_pressed"]
+[connection signal="pressed" from="jouer" to="." method="_on_jouer_pressed"]
