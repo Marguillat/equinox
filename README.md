@@ -11,8 +11,8 @@ engine : Godot 4.2
  ### Basics :
 You can jump, run but most importantly you can change the realm in which you are playing, unravelling the path as you play.
 
-### Hell
+### Hell :
 You have a dash
 
-### Heaven 
+### Heaven :
 You have a dooble jump
