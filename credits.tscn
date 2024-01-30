@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu5yv2c7ktti0"]
+
+[ext_resource type="Texture2D" uid="uid://kpb7ljocukoc" path="res://assets/background/credits.png" id="1_ysc2r"]
+
+[sub_resource type="GDScript" id="GDScript_swk28"]
+resource_name = "credits"
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file(\"res://menu.tscn\")
+"
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_swk28")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ysc2r")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.5
+offset_top = -127.0
+offset_right = 98.5
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.219608, 0.219608, 0.219608, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+text = "Retour au menu"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
