@@ -2,7 +2,7 @@
 hello this is the first game i made with some friends at a school gameJam
 engine : Godot 4.2
 
-![image]()
+![image](equinox.jpg)
 
 
 ## Concept 
