@@ -2,6 +2,9 @@
 hello this is the first game i made with some friends at a school gameJam
 engine : Godot 4.2
 
+![image]()
+
+
 ## Concept 
  You play as "Nox" a litle cat who died recently :,(  
  Your job is to travel the realms of hell and heaven in order to access the next of your 9 lives.
